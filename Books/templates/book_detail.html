@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>{{ book.title }}</h2>
+    <p>Publisher: {{ book.publisher }}</p>
+    <p>Publication date: {{ book.publication_date }}</p>
+    <p>Overall rating: {{ book.overall_rating }}</p>
+  
+    <h3>Reviews</h3>
+    {% for review in book.reviews.all %}
+      <div>
+        <h4>{{ review.commenter.name }}</h4>
+        <p>{{ review.comment_text }}</p>
+        <p>Written on: {{ review.date_written }}</p>
+        {% if review.date_modified %}
+          <p>Last modified: {{ review.date_modified }}</p>
+        {% endif %}
+      </div>
+    {% empty %}
+      <p>No reviews available.</p></body>
+</html>
